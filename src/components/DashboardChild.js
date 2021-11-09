@@ -4,6 +4,7 @@ import MinimizeIcon from '@material-ui/icons/Minimize';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import MaximizeIcon from '@material-ui/icons/Maximize';
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
         paddingTop: theme.spacing(2),
@@ -23,10 +24,16 @@ const useStyles = makeStyles((theme) => ({
         background: "#000"
     },
     minst: {
-        marginBottom: "12px",
+        //marginBottom: "12px",
         marginRight: "10px",
         color: "#ddd",
         cursor: "pointer"
+    },
+    maxst: {
+        marginTop: '12px'
+    },
+    mins: {
+        marginBottom: '12px'
     }
 
 }));
@@ -45,15 +52,17 @@ export default function DashboardChild(props) {
     return (
         <div>
             <Paper className={classes.paperst}>
-                <MinimizeIcon className={classes.minst} onClick={() => minClose()} />
+                {min && indexVal === props.index ?
+                    <MaximizeIcon className={`${classes.maxst} ${classes.minst}`} onClick={() => minClose()} /> :
+                    <MinimizeIcon className={`${classes.minst} ${classes.mins}`} onClick={() => minClose()} />}
             </Paper>
             {min && indexVal === props.index ?
                 <Card className={classes.card}>
-                <CardMedia className={classes.cardMedia}>
-                </CardMedia>
-            </Card> : null
+                    <CardMedia className={classes.cardMedia}>
+                    </CardMedia>
+                </Card> : null
             }
-            
+
         </div>
 
     );
