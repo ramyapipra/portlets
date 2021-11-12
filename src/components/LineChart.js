@@ -4,7 +4,7 @@ import { Chart } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 Chart.register(annotationPlugin);
 function LineChart(props) {
-    console.log(props)
+   // console.log(props)
     const chartRef = useRef();
     const RADIUS = 4.5;
     const CIRCLE_LINE_WIDTH = 2.5;
@@ -83,7 +83,7 @@ function LineChart(props) {
                         borderWidth: '1px',
                         borderDash: [3, 3],
                         label: {
-                            content: "Target" + " " + TARGET_SCORE,
+                            content: "Target " + TARGET_SCORE,
                             color: '#2F2F2F',
                             textAlign: 'start',
                             position: 'start',
@@ -151,7 +151,7 @@ function LineChart(props) {
                         y = y0 + GAP
                     }
 
-                    if (labelValue * 1 == 0) {
+                    if (labelValue * 1 === 0) {
                         labelValue = '0';
                     };
                     ctx?.fillText(labelValue, x, y);
