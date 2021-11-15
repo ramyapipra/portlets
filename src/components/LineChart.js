@@ -18,7 +18,7 @@ function LineChart(props) {
             backgroundColor: "white",
             borderColor: "#C4C4C4",
             borderWidth: 1,
-            data: props.chartValues,
+            data: [123,260,480,560,260],
             fill: false,
             pointBorderWidth: CIRCLE_LINE_WIDTH,
             pointRadius: RADIUS,
