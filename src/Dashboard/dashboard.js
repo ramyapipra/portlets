@@ -6,9 +6,9 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import MinimizeIcon from '@material-ui/icons/Minimize';
 import CardMedia from '@material-ui/core/CardMedia';
-import Table from '../dashboard/Table';
+import Table from './Table';
 import LineChart from '../components/LineChart';
-import Barchart from '../dashboard/Barchart';
+import Barchart from './Barchart';
 function Dashboard() {
     const draggingItem = useRef();
     const dragOverItem = useRef();
