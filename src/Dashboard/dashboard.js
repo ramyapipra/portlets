@@ -54,7 +54,7 @@ function Dashboard() {
     };
     const isLoggedIn = (value) => {
         if (indexVal || value === 1) {
-           return <Table style={{padding:"10px"}}/>
+           return <Table/>
         } else if (value === 2) {
            return <LineChart />
         } else if (value === 3) {
@@ -70,7 +70,7 @@ function Dashboard() {
     return (
         <div style={{marginTop:'30px'}}>
             <Container maxWidth="xl">
-                <Grid container spacing={4}>
+                <Grid container spacing={4} style={{padding: '10px',marginBottom: '40px'}}>
                     {list.map((value, index) => (
                         <Grid item xs={6} sm={6} md={4}
                             onDragStart={(e) => handleDragStart(e, index)}
