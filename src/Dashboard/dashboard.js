@@ -9,19 +9,22 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Table from './Table';
 import LineChart from '../components/LineChart';
 import Barchart from './Barchart';
+//  import reactMaximize from 'react-maximize'
+  import SimpleModal from '../components/maximize'
+//  const Maximize = reactMaximize({ React })
 function Dashboard() {
     const draggingItem = useRef();
     const dragOverItem = useRef();
     const [list, setList] = useState([1, 2, 3, 4, 5, 6]);
     const handleDragStart = (e, position) => {
         draggingItem.current = position;
-        console.log(e.target.innerHTML);
-        console.log('Ram', e.target.innerHTML.slice(e.target.getInnerHTML().indexOf('<p>') + 3, e.target.getInnerHTML().indexOf('</p>')))
+        // console.log(e.target.innerHTML);
+        // console.log('Ram', e.target.innerHTML.slice(e.target.getInnerHTML().indexOf('<p>') + 3, e.target.getInnerHTML().indexOf('</p>')))
     };
     const handleDragEnter = (e, position) => {
         dragOverItem.current = position;
-        console.log(e.target.innerHTML);
-        console.log('Ram', e.target.innerHTML.slice(e.target.getInnerHTML().indexOf('<p>') + 3, e.target.getInnerHTML().indexOf('</p>')))
+        // console.log(e.target.innerHTML);
+        // console.log('Ram', e.target.innerHTML.slice(e.target.getInnerHTML().indexOf('<p>') + 3, e.target.getInnerHTML().indexOf('</p>')))
     };
     const handleDragEnd = (e, index) => {
         const listCopy = [...list];
@@ -65,7 +68,7 @@ function Dashboard() {
         }
     };
     return (
-        <div>
+        <div style={{marginTop:'30px'}}>
             <Container maxWidth="xl">
                 <Grid container spacing={4}>
                     {list.map((value, index) => (
@@ -76,20 +79,39 @@ function Dashboard() {
                             onDragOver={(e) => e.preventDefault()}
                             key={index}
                             draggable
-                            style={{ marginBottom: "40px" }} >
-                            <Paper style={{ display: "flex", justifyContent: "end", background: "#000", marginTop: '40px' }}>
-                                <MinimizeIcon style={{ marginBottom: '12px', marginRight: "10px", color: "#ddd", cursor: "pointer" }} onClick={() => minClose(index)} />
-                            </Paper>
-
-                            <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                                <CardMedia style={{ height: 300 }}>
+                            style={{ marginBottom: "10px" }} >
+                            <Paper >
+                              <Grid style={{ display: "flex", justifyContent: "end", background: "#000", marginTop: '10px' }}>
+                               <SimpleModal value={value}/>
+                               </Grid>
+                               <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                <CardMedia style={{ height: 300 ,overflow:'auto'}}>
                                         {isLoggedIn(value)}
                                 </CardMedia>
                             </Card>
+                            </Paper>
+
+                            {/* <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                <CardMedia style={{ height: 300 }}>
+                                        {isLoggedIn(value)}
+                                </CardMedia>
+                            </Card> */}
                         </Grid>
                     ))}
                 </Grid>
             </Container>
+            {/* <Maximize
+      shouldComponentMaximize={() => true}
+      shouldComponentCompress={() => true}
+  >
+    {maximize => (
+      <div>
+        <span style={{ float: 'right' }}>
+          {maximize.Controls}
+        </span>
+      </div>
+    )}
+  </Maximize> */}
         </div>
     );
 };
