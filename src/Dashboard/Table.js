@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,43 +8,62 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+   // backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.black,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+function createData(name, calories, fat) {
+  return { name, calories, fat};
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0)
+  createData('Frozen yoghurt', 159, 6.0),
+  createData('Ice cream sandwich', 237, 9.0),
+  createData('Eclair', 262, 16.0)
 ];
 
-export default function BasicTable() {
+const useStyles = makeStyles({
+  table: {
+    minWidth: 400,
+  },
+});
+
+export default function CustomizedTables() {
+  const classes = useStyles();
+
   return (
-    <TableContainer component={Paper} style={{padding:'10px'}}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer style={{padding:"12px"}}>
+      <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert </TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <StyledTableCell>Dessert</StyledTableCell>
+            <StyledTableCell align="right">Calories</StyledTableCell>
+            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
+            <StyledTableRow key={row.name}>
+              <StyledTableCell component="th" scope="row">
                 {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
+              </StyledTableCell>
+              <StyledTableCell align="right">{row.calories}</StyledTableCell>
+              <StyledTableCell align="right">{row.fat}</StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import MinimizeIcon from '@material-ui/icons/Minimize';
-import Table from '../Dashboard/Table'
+import CustomizedTables from '../Dashboard/Table'
 import Barchart from '../Dashboard/Barchart';
 import LineChart from './LineChart';
 import WebAssetIcon from '@material-ui/icons/WebAsset';
@@ -68,7 +68,7 @@ export default function SimpleModal(props) {
   const isLoggedIn = () => {
     if ( value === 1) {
         console.log("value2",value)
-       return <Table style={{padding:"10px"}}/>
+       return <CustomizedTables style={{padding:"10px"}}/>
     } else if (value === 2) {
        return <LineChart />
     } else if (value === 3) {

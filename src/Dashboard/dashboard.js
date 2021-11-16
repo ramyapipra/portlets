@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import MinimizeIcon from '@material-ui/icons/Minimize';
 import CardMedia from '@material-ui/core/CardMedia';
-import Table from './Table';
+import CustomizedTables from './Table';
 import LineChart from '../components/LineChart';
 import Barchart from './Barchart';
 //  import reactMaximize from 'react-maximize'
@@ -54,7 +54,7 @@ function Dashboard() {
     };
     const isLoggedIn = (value) => {
         if (indexVal || value === 1) {
-           return <Table/>
+           return <CustomizedTables/>
         } else if (value === 2) {
            return <LineChart />
         } else if (value === 3) {
